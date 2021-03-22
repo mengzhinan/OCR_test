@@ -19,7 +19,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -44,5 +44,11 @@ dependencies {
 
 
     implementation 'com.rmtheis:tess-two:9.1.0'
+
+    implementation files('libs/google-api-translate-java-0.98-mod2.jar')
+    implementation files('libs/json_simple-1.1.jar')
+    implementation files('libs/jtar-1.1.jar')
+    implementation files('libs/microsoft-translator-java-api-0.6-mod.jar')
+
 
 }
