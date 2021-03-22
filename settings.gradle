@@ -1,0 +1,3 @@
+include ':ocrLib'
+include ':app'
+rootProject.name = "OCR_test"
