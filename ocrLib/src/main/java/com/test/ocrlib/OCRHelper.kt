@@ -15,7 +15,7 @@ object OCRHelper {
      */
     fun ocrBitmap(){
 //        val baseApi = TessBaseAPI()
-//        baseApi.setDebug(true)
+//        baseApi.setDebug(false)
 //        baseApi.init(path, LANGUAGE_FILE_NAME)//这里需要注意
 //        baseApi.setImage(bitmap)
 //        val text = baseApi.utF8Text

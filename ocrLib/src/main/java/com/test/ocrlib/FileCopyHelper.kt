@@ -15,21 +15,27 @@ import java.io.InputStream
 object FileCopyHelper {
 
     private const val FILE_PARENT_FOLDER_NAME = "tessdata"
-    private const val LANGUAGE_FILE_NAME = "chi_sim"
-    private const val LANGUAGE_FULL_NAME = "chi_sim.traineddata"
+    private const val LANGUAGE_FULL_NAME_CHI = "chi_sim.traineddata"
+    private const val LANGUAGE_FULL_NAME_ENG = "eng.traineddata"
+    private const val LANGUAGE_FULL_NAME_OSD = "osd.traineddata"
 
+    fun copyEngToSDCard(context: Context?): Boolean {
+        return copyAssetsToSDCard(context, LANGUAGE_FULL_NAME_ENG)
+    }
+
+    fun copyOsdToSDCard(context: Context?): Boolean {
+        return copyAssetsToSDCard(context, LANGUAGE_FULL_NAME_OSD)
+    }
 
     fun copyChiToSDCard(context: Context?): Boolean {
-        return copyAssetsToSDCard(context, LANGUAGE_FILE_NAME, LANGUAGE_FULL_NAME)
+        return copyAssetsToSDCard(context, LANGUAGE_FULL_NAME_CHI)
     }
 
     private fun copyAssetsToSDCard(
         context: Context?,
-        onlyFileName: String?,
         fullName: String?
     ): Boolean {
         context ?: return false
-        onlyFileName ?: return false
         fullName ?: return false
 
         val outFile = File(context.getExternalFilesDir(FILE_PARENT_FOLDER_NAME), fullName)
@@ -40,7 +46,7 @@ object FileCopyHelper {
         var inputStream: InputStream? = null
         var fos: FileOutputStream? = null
         try {
-            inputStream = context.assets.open(onlyFileName)
+            inputStream = context.assets.open(fullName)
             fos = FileOutputStream(outFile)
             val buffer = ByteArray(1024)
             var byteCount = inputStream.read(buffer)
